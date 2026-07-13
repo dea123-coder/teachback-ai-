@@ -20,4 +20,9 @@ The application processes the explanation locally using on-device AI to identify
 
 Project architecture has been finalized.
 
+## Repository Status
+
+Current repository contains the initial documentation and project structure prepared during the planning phase of OSDHack 2026.
+
+Core implementation will begin in the next development phase.
 Implementation is currently in progress.
