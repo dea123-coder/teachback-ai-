@@ -284,29 +284,13 @@ If the browser-based transformer model cannot be loaded:
 
 ---
 
-# Screenshots
-
-### Home
-
-![Home](docs/screenshots/home.png)
-
-### Studio
-
-![Studio](docs/screenshots/studio.png)
-
-### Analysis Results
-
-![Analysis Results](docs/screenshots/report.png)
-
-### Dashboard
-
-![Dashboard](docs/screenshots/dashboard.png)
-
-### History
-
-![History](docs/screenshots/history.png)
-
----
+# docs/
+ └── screenshots/
+      ├── home.png
+      ├── studio.png
+      ├── report.png
+      ├── dashboard.png
+      └── history.png
 
 # License
 
