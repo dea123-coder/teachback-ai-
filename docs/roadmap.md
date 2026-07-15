@@ -1,31 +1,26 @@
-# Development Roadmap
+# Product Roadmap
 
-## Mid Evaluation Progress
+## Current Version
 
-- Repository initialized
-- Project idea finalized
-- Documentation prepared
-- Initial architecture completed
-- Project structure created
+- Voice-based teaching
+- Browser transformer inference
+- Hybrid educational analysis
+- Personalized learning feedback
 
-## Remaining Tasks
+---
 
-### Frontend
-- Build user interface
-- Voice recording screen
-- Understanding dashboard
+## Next Milestones
 
-### Backend
-- Local processing pipeline
-- AI integration
-- Question generation
+- Offline speech recognition
+- Multilingual support
+- Learning history
+- Adaptive study recommendations
+- Personalized revision plans
+- Teacher dashboard
+- Mobile application
 
-### AI
-- On-device speech processing
-- Concept extraction
-- Understanding analysis
+---
 
-### Final Submission
-- Demo video
-- Screenshots
-- Final documentation
+## Long-Term Vision
+
+Build a privacy-first AI learning companion that helps students understand concepts through explanation instead of memorization.
