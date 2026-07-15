@@ -1,28 +1,104 @@
-# TeachBack AI Architecture
+# System Architecture
 
-## Objective
+## Overview
 
-TeachBack AI helps students verify conceptual understanding by asking them to explain a topic in their own words.
+TeachBack AI follows a hybrid architecture that combines deterministic educational analysis with browser-based transformer inference.
 
-The application processes the explanation locally using on-device AI to identify missing concepts and generate personalized follow-up questions.
+The deterministic engine provides stable educational feedback while the browser-side transformer improves semantic understanding using sentence embeddings.
 
-## Planned Workflow
+---
 
-1. User selects a topic.
-2. User explains the topic using voice.
-3. Speech is processed locally.
-4. Important concepts are extracted.
-5. Missing concepts are detected.
-6. An Understanding Map is generated.
-7. Adaptive follow-up questions are presented.
+## High-Level Architecture
 
-## Current Status
+```text
+                 User
+                  │
+                  ▼
+      Browser (Next.js Frontend)
+                  │
+                  ▼
+     Browser Speech Recognition
+                  │
+                  ▼
+          Teaching Transcript
+                  │
+         ┌────────┴────────┐
+         │                 │
+         ▼                 ▼
+Transformers.js      /api/analyze
+(MiniLM Model)   Deterministic Engine
+         │                 │
+         └────────┬────────┘
+                  ▼
+          Combined Analysis
+                  │
+                  ▼
+         Learning Feedback
+```
 
-Project architecture has been finalized.
+---
 
-## Repository Status
+## Components
 
-Current repository contains the initial documentation and project structure prepared during the planning phase of OSDHack 2026.
+### Frontend
 
-Core implementation will begin in the next development phase.
-Implementation is currently in progress.
+- Next.js
+- React
+- TypeScript
+
+Responsible for:
+
+- Topic selection
+- Voice recording
+- Transcript display
+- Analysis dashboard
+
+---
+
+### Local AI Layer
+
+Runs completely inside the browser.
+
+Model:
+
+Xenova/all-MiniLM-L6-v2
+
+Runtime:
+
+Transformers.js
+
+Purpose:
+
+Generate sentence embeddings and calculate semantic similarity.
+
+---
+
+### Analysis Engine
+
+Performs:
+
+- Concept coverage
+- Keyword matching
+- Educational heuristics
+- Learning score
+- Follow-up questions
+
+---
+
+## Privacy
+
+The transformer executes inside the user's browser.
+
+No cloud AI inference is used.
+
+The deterministic engine remains available as a fallback.
+
+---
+
+## Design Decisions
+
+- Lightweight browser transformer
+- Hybrid scoring
+- Fast inference
+- Privacy-first design
+- Graceful fallback
