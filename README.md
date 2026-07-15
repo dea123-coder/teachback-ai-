@@ -4,9 +4,15 @@
 
 TeachBack AI is an AI-powered learning companion that helps students build deeper conceptual understanding using the teach-back learning method.
 
-Instead of only evaluating whether an answer is correct, TeachBack AI encourages students to explain a topic in their own words. The application analyzes the explanation, identifies knowledge gaps, highlights strengths, and provides personalized feedback to improve learning.
+Instead of simply evaluating whether an answer is correct, TeachBack AI encourages students to explain a topic in their own words. The application analyzes the explanation, identifies knowledge gaps, highlights strengths, and provides personalized feedback to improve learning.
 
 The project combines a browser-based transformer model with a deterministic educational analysis engine to provide fast, privacy-focused feedback while keeping the primary AI functionality on the user's device.
+
+---
+
+## Demo Video
+
+https://drive.google.com/file/d/1jCrxZdnYC6IGFj66IdSweKUv9KZnL3Sj/view?usp=sharing
 
 ---
 
@@ -51,14 +57,14 @@ Semantic understanding is enhanced using a browser-based transformer model that 
 
 TeachBack AI combines:
 
-- Local transformer embeddings for semantic similarity
-- Deterministic concept analysis for educational feedback
+- Browser-based transformer embeddings for semantic similarity
+- Deterministic educational analysis for concept evaluation
 
-This hybrid approach improves reliability while ensuring the application remains functional even if the transformer model cannot be loaded.
+This hybrid approach improves semantic understanding while ensuring the application remains functional even if the transformer model cannot be loaded.
 
 ## Privacy-Focused Design
 
-The primary AI reasoning runs locally in the browser without relying on cloud AI inference services.
+The primary AI model executes locally inside the browser. The deterministic analysis engine remains available as a reliable fallback.
 
 ---
 
@@ -86,7 +92,7 @@ Sentence Embeddings
 Semantic Similarity
       │
       ▼
-TeachBack Analysis
+Deterministic Analysis Engine
       │
       ▼
 Learning Feedback
@@ -106,18 +112,13 @@ Transformers.js
 
 **Purpose**
 
-The transformer model generates sentence embeddings locally for:
-
-- Selected learning topic
-- Student explanation transcript
-
-The semantic similarity score is combined with the existing deterministic analysis to improve concept understanding without replacing the original scoring engine.
+The model generates sentence embeddings locally for the selected topic and the student's explanation. These embeddings are compared using semantic similarity and combined with the deterministic educational analysis to provide more meaningful learning feedback while preserving the existing scoring pipeline.
 
 ---
 
 # On-Device AI Compliance
 
-The project follows the OSDHack 2026 on-device AI objective by ensuring that the primary AI model executes locally within the user's browser.
+TeachBack AI follows the OSDHack 2026 objective of running the primary AI model locally on the user's device.
 
 Local execution includes:
 
@@ -127,29 +128,29 @@ Local execution includes:
 
 No cloud-based large language model is used during semantic analysis.
 
-The existing deterministic analysis engine remains available as a fallback if the transformer model cannot be loaded successfully.
+If the transformer model cannot be loaded, the deterministic educational analysis engine continues providing feedback without interrupting the user experience.
 
 ---
 
-# System Design
+# System Architecture
 
-The application consists of four primary components:
+The application consists of four primary layers.
 
 ### User Interface
 
-Built with Next.js and React, providing the teaching workflow, transcript display, and feedback dashboard.
+Built using Next.js, React and TypeScript. It manages the learning workflow, transcript display and feedback presentation.
 
 ### Speech Input
 
-Uses the browser's Speech Recognition API to convert spoken explanations into text.
+The browser Speech Recognition API converts spoken explanations into text.
 
 ### Local AI Layer
 
-Runs the Xenova/all-MiniLM-L6-v2 embedding model through Transformers.js directly in the browser.
+Transformers.js loads the Xenova/all-MiniLM-L6-v2 embedding model directly inside the browser and performs local inference.
 
 ### Educational Analysis Engine
 
-Combines semantic similarity from the local transformer with deterministic concept analysis to generate meaningful learning feedback.
+Semantic similarity from the local transformer is combined with deterministic concept analysis to generate educational feedback.
 
 ---
 
@@ -167,25 +168,13 @@ Combines semantic similarity from the local transformer with deterministic conce
 - Transformers.js
 - Xenova/all-MiniLM-L6-v2
 
-### Speech
+### Browser APIs
 
-- Browser Speech Recognition API
+- Web Speech API (Speech Recognition)
 
 ---
 
-# Installation
-
-Clone the repository:
-
-```bash
-git clone https://github.com/YOUR_USERNAME/teachback-ai.git
-```
-
-Navigate to the project:
-
-```bash
-cd teachback-ai
-```
+# # Installation
 
 Install dependencies:
 
@@ -199,7 +188,7 @@ Start the development server:
 npm run dev
 ```
 
-Open the application:
+Open:
 
 ```text
 http://localhost:3000
@@ -215,19 +204,19 @@ npm run build
 
 # Example Workflow
 
-**Topic**
+### Topic
 
-```text
+```
 Photosynthesis
 ```
 
-**Student Explanation**
+### Student Explanation
 
-```text
+```
 Photosynthesis is the process by which green plants prepare their food using sunlight, water and carbon dioxide. Chlorophyll absorbs sunlight and oxygen is released as a by-product.
 ```
 
-**Generated Feedback**
+### Generated Feedback
 
 - Learning Score
 - Strong Concepts
@@ -244,23 +233,24 @@ If the browser-based transformer model cannot be loaded:
 
 - The application continues running normally.
 - The deterministic educational analysis engine performs the evaluation.
-- The user experience remains uninterrupted.
+- The user still receives complete educational feedback.
 
 ---
 
-# Privacy
+#Privacy
 
-- The transformer model performs semantic inference locally in the browser.
-- No cloud AI model is used for semantic understanding.
-- No API keys are required for AI inference.
-- Speech recognition depends on browser support and implementation.
+- Semantic inference is performed locally in the browser using Transformers.js.
+- No cloud-based AI model is used for semantic analysis.
+- No AI API keys are required.
+- User speech is processed through the browser's Speech Recognition API.
+- The application does not rely on external AI services for learning analysis.
 
 ---
 
 # Current Limitations
 
-- Browser speech recognition availability depends on the user's browser.
-- Speech recognition behavior may vary across platforms.
+- Browser speech recognition availability depends on the browser implementation.
+- Speech recognition behavior may vary across operating systems.
 - Fully offline speech recognition is outside the current project scope.
 
 ---
@@ -294,6 +284,30 @@ If the browser-based transformer model cannot be loaded:
 
 ---
 
+# Screenshots
+
+### Home
+
+![Home](docs/screenshots/home.png)
+
+### Studio
+
+![Studio](docs/screenshots/studio.png)
+
+### Analysis Results
+
+![Analysis Results](docs/screenshots/report.png)
+
+### Dashboard
+
+![Dashboard](docs/screenshots/dashboard.png)
+
+### History
+
+![History](docs/screenshots/history.png)
+
+---
+
 # License
 
-This project was developed for OSDHack 2026 as an educational demonstration of privacy-focused on-device AI.
+This project is licensed under the MIT License. See the LICENSE file for details.
